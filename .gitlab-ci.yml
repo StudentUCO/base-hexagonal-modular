@@ -12,8 +12,12 @@ test:
   image: gradle:jdk17
   stage: test
   script: gradle test --no-daemon --stacktrace
+  tags:
+    - linux
 
 build:
   image: gradle:jdk17
   stage: build
   script: gradle build --no-daemon --stacktrace
+  tags:
+    - linux
