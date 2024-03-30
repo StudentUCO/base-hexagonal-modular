@@ -3,42 +3,23 @@ image: openjdk:17-jdk
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
+tags:
+  - linux
+
 stages:
   - setup
-  - dependencies
   - build
   - test
-
-cache:
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
 
 setup:
   stage: setup
   script:
-    - apt-get update -qq && apt-get install -y -qq gradle
-  tags:
-    - linux
-
-dependencies:
-  stage: dependencies
-  script: ./gradlew dependencies
-  tags:
-    - linux
+    - sudo apt-get update -qq && sudo apt-get install -y -qq openjdk-17-jdk gradle
 
 build:
   stage: build
-  script: ./gradlew assemble
-  tags:
-    - linux
-  artifacts:
-    paths:
-      - build/libs/*.jar
-    expire_in: 1 week
+  script: gradle assemble
 
 test:
   stage: test
-  script: ./gradlew check
-  tags:
-    - linux
+  script: gradle check
