@@ -11,7 +11,7 @@ stages:
 setup:
   stage: setup
   script:
-    - apt-get update -qq && apt-get install -y -qq openjdk-17-jdk gradle
+    - sudo apt-get update -qq && sudo apt-get install -y -qq openjdk-17-jdk gradle
   tags:
     - linux
 
