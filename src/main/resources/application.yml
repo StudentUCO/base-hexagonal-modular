@@ -7,12 +7,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: admin
     password: admin
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 # Configuración de registro
 logging:
