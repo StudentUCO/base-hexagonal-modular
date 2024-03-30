@@ -1,0 +1,2 @@
+INSERT VALUES(?,?,?,?)
+INTO task;

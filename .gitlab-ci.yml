@@ -1,0 +1,20 @@
+image: openjdk:17-jdk
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script: gradle assemble --stacktrace
+  tags:
+    - linux
+
+test:
+  stage: test
+  script: gradle check --stacktrace
+  tags:
+    - linux
