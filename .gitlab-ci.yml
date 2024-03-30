@@ -4,8 +4,15 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 stages:
+  - config
   - build
   - test
+
+config:
+  stage: config
+  script: gradle -v
+  tags:
+    - linux
 
 build:
   stage: build
