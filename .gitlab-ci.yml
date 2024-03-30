@@ -2,6 +2,7 @@ image: openjdk:17-jdk
 
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  GRADLE_USER_HOME: "${CI_PROJECT_DIR}/.gradle"
 
 stages:
   - config
@@ -16,7 +17,9 @@ config:
 
 build:
   stage: build
-  script: gradle assemble --stacktrace
+  script:
+    - gradle clean
+    - gradle assemble --stacktrace
   tags:
     - linux
 
