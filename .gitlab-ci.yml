@@ -5,7 +5,6 @@ variables:
   GRADLE_USER_HOME: "${CI_PROJECT_DIR}/.gradle"
 
 before_script:
-  - export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
   - chmod +x gradlew
 
 stages:
