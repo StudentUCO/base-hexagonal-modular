@@ -4,16 +4,8 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 stages:
-  - setup
   - build
   - test
-
-setup:
-  stage: setup
-  script:
-    - sudo apt-get update -qq && sudo apt-get install -y -qq openjdk-17-jdk gradle
-  tags:
-    - linux
 
 build:
   stage: build
