@@ -9,12 +9,12 @@ stages:
 
 build:
   stage: build
-  script: gradle assemble
+  script: gradle assemble --stacktrace
   tags:
     - linux
 
 test:
   stage: test
-  script: gradle check
+  script: gradle check --stacktrace
   tags:
     - linux
