@@ -1,7 +1,7 @@
 image: openjdk:17-jdk
 
 variables:
-  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Xmx2g"
 
 stages:
   - build
