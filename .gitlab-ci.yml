@@ -4,6 +4,7 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 stages:
+  - prepare
   - build
   - test
 
@@ -11,6 +12,13 @@ cache:
   paths:
     - .gradle/wrapper
     - .gradle/caches
+
+prepare:
+  stage: prepare
+  script:
+    - chmod +x ./gradlew
+  tags:
+    - linux
 
 build:
   stage: build
