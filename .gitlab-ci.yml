@@ -11,20 +11,20 @@ stages:
 
 config:
   stage: config
-  script: gradle -v
+  script: ./gradlew -v
   tags:
     - linux
 
 build:
   stage: build
   script:
-    - gradle clean
-    - gradle assemble --stacktrace
+    - ./gradlew clean
+    - ./gradlew build
   tags:
     - linux
 
 test:
   stage: test
-  script: gradle check --stacktrace
+  script: ./gradlew test
   tags:
     - linux
