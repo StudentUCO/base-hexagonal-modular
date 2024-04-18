@@ -1,4 +1,4 @@
-package com.demo.application.service;
+package com.demo.application.facade;
 
 import com.demo.domain.model.AdditionalTaskInfo;
 import com.demo.domain.model.Task;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class TaskService implements CreateTaskUseCase, RetrieveTaskUseCase, UpdateTaskUseCase, DeleteTaskUseCase,
+public class TaskFacade implements CreateTaskUseCase, RetrieveTaskUseCase, UpdateTaskUseCase, DeleteTaskUseCase,
         GetAdditionalTaskInfoUseCase {
 
     private final CreateTaskUseCase createTaskUseCase;

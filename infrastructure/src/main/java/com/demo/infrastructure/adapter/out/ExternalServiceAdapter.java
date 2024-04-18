@@ -1,4 +1,4 @@
-package com.demo.infrastructure.adapter;
+package com.demo.infrastructure.adapter.out;
 
 import com.demo.domain.model.AdditionalTaskInfo;
 import com.demo.domain.port.out.ExternalServicePort;
@@ -10,9 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class ExternalServiceAdapter implements ExternalServicePort {
-//    https://jsonplaceholder.typicode.com/todos/
-//    https://jsonplaceholder.typicode.com/users/
-
     private final RestTemplate restTemplate;
 
     public ExternalServiceAdapter() {

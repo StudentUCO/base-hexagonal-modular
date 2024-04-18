@@ -1,4 +1,4 @@
-package com.demo.infrastructure.dto;
+package com.demo.application.dto;
 
 import com.demo.domain.model.Task;
 import lombok.Data;
