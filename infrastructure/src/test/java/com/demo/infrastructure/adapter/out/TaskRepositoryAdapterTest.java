@@ -1,4 +1,4 @@
-package com.demo.infrastructure.repository;
+package com.demo.infrastructure.adapter.out;
 
 import com.demo.domain.model.Task;
 import org.junit.jupiter.api.Test;
@@ -14,19 +14,21 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest
 @ActiveProfiles("test")
 class TaskRepositoryAdapterTest {
+    private final TaskRepositoryAdapter taskRepositoryAdapter;
 
     @Autowired
-    private TaskRepositoryAdapter taskRepositoryAdapter;
+    TaskRepositoryAdapterTest(TaskRepositoryAdapter taskRepositoryAdapter) {
+        this.taskRepositoryAdapter = taskRepositoryAdapter;
+    }
 
     @Test
     public void testSave() {
-        Long id = null;
         String title = "Test Title";
         String description = "Test Description";
         LocalDateTime creationDate = LocalDateTime.now();
         boolean completed = false;
 
-        Task task = Task.build(id, title, description, creationDate, completed);
+        Task task = Task.build(null, title, description, creationDate, completed);
 
         Task result = taskRepositoryAdapter.save(task);
 

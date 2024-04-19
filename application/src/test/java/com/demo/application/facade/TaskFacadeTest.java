@@ -1,4 +1,4 @@
-package com.demo.application.service;
+package com.demo.application.facade;
 
 import com.demo.domain.model.AdditionalTaskInfo;
 import com.demo.domain.model.Task;
@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class TaskServiceTest {
+public class TaskFacadeTest {
 
     @Mock
     private CreateTaskUseCase createTaskUseCase;
@@ -37,7 +37,7 @@ public class TaskServiceTest {
     private GetAdditionalTaskInfoUseCase getAdditionalTaskInfoUseCase;
 
     @InjectMocks
-    private TaskService taskService;
+    private TaskFacade taskFacade;
 
     @Test
     public void testCreateTask() {
@@ -48,7 +48,7 @@ public class TaskServiceTest {
         when(createTaskUseCase.createTask(any(Task.class))).thenReturn(mockTask);
 
         // Llamar al método a probar
-        Task result = taskService.createTask(mockTask);
+        Task result = taskFacade.createTask(mockTask);
 
         // Verificar que el método createTask del mockCreateTaskUseCase se llamó
         verify(createTaskUseCase, times(1)).createTask(mockTask);
@@ -63,7 +63,7 @@ public class TaskServiceTest {
         when(deleteTaskUseCase.deleteTask(any(Long.class))).thenReturn(true);
 
         // Llamar al método a probar
-        boolean result = taskService.deleteTask(1L);
+        boolean result = taskFacade.deleteTask(1L);
 
         // Verificar que el método deleteTask del mockDeleteTaskUseCase se llamó
         verify(deleteTaskUseCase, times(1)).deleteTask(1L);
@@ -81,7 +81,7 @@ public class TaskServiceTest {
         when(getAdditionalTaskInfoUseCase.getAdditionalTaskInfo(any(Long.class))).thenReturn(mockAdditionalTaskInfo);
 
         // Llamar al método a probar
-        AdditionalTaskInfo result = taskService.getAdditionalTaskInfo(1L);
+        AdditionalTaskInfo result = taskFacade.getAdditionalTaskInfo(1L);
 
         // Verificar que el método getAdditionalTaskInfo del mockGetAdditionalTaskInfoUseCase se llamó
         verify(getAdditionalTaskInfoUseCase, times(1)).getAdditionalTaskInfo(1L);
@@ -99,7 +99,7 @@ public class TaskServiceTest {
         when(retrieveTaskUseCase.getTask(any(Long.class))).thenReturn(Optional.of(mockTask));
 
         // Llamar al método a probar
-        Optional<Task> result = taskService.getTask(1L);
+        Optional<Task> result = taskFacade.getTask(1L);
 
         // Verificar que el método getTask del mockRetrieveTaskUseCase se llamó
         verify(retrieveTaskUseCase, times(1)).getTask(1L);
@@ -115,7 +115,7 @@ public class TaskServiceTest {
         when(retrieveTaskUseCase.getAllTasks()).thenReturn(Arrays.asList(mock(Task.class), mock(Task.class)));
 
         // Llamar al método a probar
-        List<Task> result = taskService.getAllTasks();
+        List<Task> result = taskFacade.getAllTasks();
 
         // Verificar que el método getAllTasks del mockRetrieveTaskUseCase se llamó
         verify(retrieveTaskUseCase, times(1)).getAllTasks();
@@ -133,7 +133,7 @@ public class TaskServiceTest {
         when(updateTaskUseCase.updateTask(any(Long.class), any(Task.class))).thenReturn(Optional.of(mockTask));
 
         // Llamar al método a probar
-        Optional<Task> result = taskService.updateTask(1L, mockTask);
+        Optional<Task> result = taskFacade.updateTask(1L, mockTask);
 
         // Verificar que el método updateTask del mockUpdateTaskUseCase se llamó
         verify(updateTaskUseCase, times(1)).updateTask(1L, mockTask);
