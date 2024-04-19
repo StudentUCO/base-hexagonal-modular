@@ -1,6 +1,6 @@
 dependencies {
-    implementation project(':domain')
-    implementation project(':application')
+    implementation project(':ventas:domain')
+    implementation project(':ventas:application')
     implementation "org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"
     implementation "org.flywaydb:flyway-core:${flywaydbVersion}"
 

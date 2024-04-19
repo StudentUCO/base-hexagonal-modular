@@ -23,7 +23,11 @@ repositories {
 
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    implementation project(':infrastructure')
+    subprojects.each { subproject ->
+        if (subproject.name.endsWith('infrastructure')) {
+            implementation project(subproject.path)
+        }
+    }
 
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
@@ -42,7 +46,7 @@ bootJar {
 subprojects { subproject ->
     apply plugin: 'java'
 
-    if (subproject.name in ['application', 'infrastructure']) {
+    if (subproject.name.endsWith('application') || subproject.name.endsWith('infrastructure')) {
         dependencies {
             implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 
